@@ -20,12 +20,22 @@ Password:
 </form>
 
 <?php
+include 'db_connect.php';
+
 if(isset($_POST['name'])) {
 
-echo "Registration Successful";
+$name = $_POST['name'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$sql = "INSERT INTO customers (`first name`, email, password, `last name`, phone, adress)
+VALUES ('$name', '$email', '$password', 'N/A', 'N/A', 'N/A')";
+
+if(mysqli_query($conn, $sql)){
+    echo "Registration Successful";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
 
 }
 ?>
-
-</body>
-</html>
