@@ -1,3 +1,13 @@
+<<?php
+session_start();
+
+if(!isset($_SESSION['user']))
+{
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +15,7 @@
 </head>
 <body>
 
-    <h1>E-Commerce Dashboard</h1>
+    <h1>Welcome <?php echo $_SESSION['user']; ?></h1>
 
     <hr>
 
@@ -37,8 +47,22 @@
 
     <hr>
 
+    <h2>Shopping Cart</h2>
+
+    <a href="cart.php">
+        <button>View Cart</button>
+    </a>
+
+    <hr>
+
     <a href="index.php">
         <button>Back to Home</button>
+    </a>
+
+    <br><br>
+
+    <a href="logout.php">
+        <button>Logout</button>
     </a>
 
 </body>
