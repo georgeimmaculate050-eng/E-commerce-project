@@ -40,8 +40,10 @@ while($row = mysqli_fetch_assoc($result))
 <td>
     <td>
     <a href="update_product.php?id=<?php echo $row['product_id']; ?>">Update</a>
-    |
-    <a href="delete_product.php?id=<?php echo $row['product_id']; ?>">Delete</a>
+|
+<a href="delete_product.php?id=<?php echo $row['product_id']; ?>">Delete</a>
+|
+<a href="add_to_cart.php?id=<?php echo $row['product_id']; ?>">Add to Cart</a> 
 </td>
 </tr>
 <?php
