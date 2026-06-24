@@ -12,6 +12,11 @@ if(!isset($_SESSION['user']))
 <html>
 <head>
     <title>Dashboard</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -19,47 +24,53 @@ if(!isset($_SESSION['user']))
 
     <hr>
 
-    <h2>Customer Management</h2>
+    <div class="dashboard-container">
 
-    <a href="register.php">
-        <button>Add Customer</button>
-    </a>
+    <div>
+        <h2>Customer Management</h2>
 
-    <br><br>
+        <a href="register.php">
+            <button>Add Customer</button>
+        </a>
 
-    <a href="view_customers.php">
-        <button>View Customers</button>
-    </a>
+        <br><br>
 
-    <hr>
+        <a href="view_customers.php">
+            <button>View Customers</button>
+        </a>
+    </div>
 
-    <h2>Product Management</h2>
+    <div>
+        <h2>Product Management</h2>
 
-    <a href="add_product.php">
-        <button>Add Product</button>
-    </a>
+        <a href="add_product.php">
+            <button>Add Product</button>
+        </a>
 
-    <br><br>
+        <br><br>
 
-    <a href="view_products.php">
-        <button>View Products</button>
-    </a>
+        <a href="view_products.php">
+            <button>View Products</button>
+        </a>
+    </div>
 
-    <hr>
-
+    <div>
     <h2>Shopping Cart</h2>
 
     <a href="cart.php">
         <button>View Cart</button>
     </a>
+</div>
 
-    <hr>
+<div>
+    <h2>Orders</h2>
 
-<h2>Orders</h2>
+    <a href="view_orders.php">
+        <button>View Orders</button>
+    </a>
+</div>
 
-<a href="view_orders.php">
-    <button>View Orders</button>
-</a>
+</div>
 
 <hr>
 

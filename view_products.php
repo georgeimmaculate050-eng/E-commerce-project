@@ -21,6 +21,10 @@ $result = mysqli_query($conn, $sql);
 <html>
 <head>
     <title>View Products</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -32,53 +36,46 @@ $result = mysqli_query($conn, $sql);
 
 <br>
 
-<table border="1" cellpadding="10">
-<tr>
-    <th>ID</th>
-    <th>Product Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Stock</th>
-    <th>Category</th>
-    <th>Image</th>
-<th>Action</th>
-</tr>
+<div class="product-grid">
 
 <?php
 while($row = mysqli_fetch_assoc($result))
 {
 ?>
-<tr>
-    <td><?php echo $row['product_id']; ?></td>
-    <td><?php echo $row['product_name']; ?></td>
-    <td><?php echo $row['description']; ?></td>
-    <td><?php echo $row['price']; ?></td>
-    <td><?php echo $row['stock_quantity']; ?></td>
-    <td><?php echo $row['category']; ?></td>
-    <td>
-    <img src="images/<?php echo $row['image']; ?>"
-         width="100"
-         height="100">
-    <br>
-    <?php echo $row['image']; ?>
-</td>
 
-</td>
+<div class="product-card">
 
-<td>
-    <td>
-    <a href="update_product.php?id=<?php echo $row['product_id']; ?>">Update</a>
-|
-<a href="delete_product.php?id=<?php echo $row['product_id']; ?>">Delete</a>
-|
-<a href="add_to_cart.php?id=<?php echo $row['product_id']; ?>">Add to Cart</a> 
-</td>
-</tr>
+    <img src="images/<?php echo $row['image']; ?>">
+
+    <h3><?php echo $row['product_name']; ?></h3>
+
+    <p><?php echo $row['description']; ?></p>
+
+    <p><strong>Ksh <?php echo $row['price']; ?></strong></p>
+
+    <p>Stock: <?php echo $row['stock_quantity']; ?></p>
+
+    <p>Category: <?php echo $row['category']; ?></p>
+
+    <a href="update_product.php?id=<?php echo $row['product_id']; ?>">
+        <button>Update</button>
+    </a>
+
+    <a href="delete_product.php?id=<?php echo $row['product_id']; ?>">
+        <button>Delete</button>
+    </a>
+
+    <a href="add_to_cart.php?id=<?php echo $row['product_id']; ?>">
+        <button>Add to Cart</button>
+    </a>
+
+</div>
+
 <?php
 }
 ?>
 
-</table>
+</div>
 
 <br><br>
 
