@@ -55,9 +55,17 @@ if(!isset($_SESSION['user']))
 
     <hr>
 
-    <a href="index.php">
-        <button>Back to Home</button>
-    </a>
+<h2>Orders</h2>
+
+<a href="view_orders.php">
+    <button>View Orders</button>
+</a>
+
+<hr>
+
+<a href="index.php">
+    <button>Back to Home</button>
+</a>
 
     <br><br>
 

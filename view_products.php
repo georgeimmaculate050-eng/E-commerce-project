@@ -1,7 +1,19 @@
 <?php
 include 'db_connect.php';
 
-$sql = "SELECT * FROM products";
+if(isset($_GET['search']))
+{
+    $search = $_GET['search'];
+
+    $sql = "SELECT * FROM products
+            WHERE product_name LIKE '%$search%'
+            OR category LIKE '%$search%'";
+}
+else
+{
+    $sql = "SELECT * FROM products";
+}
+
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -12,7 +24,13 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
 
-<h1>Products</h1>
+<form method="GET">
+    <input type="text" name="search" placeholder="Search products">
+
+    <input type="submit" value="Search">
+</form>
+
+<br>
 
 <table border="1" cellpadding="10">
 <tr>
@@ -22,6 +40,7 @@ $result = mysqli_query($conn, $sql);
     <th>Price</th>
     <th>Stock</th>
     <th>Category</th>
+    <th>Image</th>
 <th>Action</th>
 </tr>
 
@@ -36,6 +55,15 @@ while($row = mysqli_fetch_assoc($result))
     <td><?php echo $row['price']; ?></td>
     <td><?php echo $row['stock_quantity']; ?></td>
     <td><?php echo $row['category']; ?></td>
+    <td>
+    <img src="images/<?php echo $row['image']; ?>"
+         width="100"
+         height="100">
+    <br>
+    <?php echo $row['image']; ?>
+</td>
+
+</td>
 
 <td>
     <td>

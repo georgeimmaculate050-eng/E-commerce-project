@@ -55,10 +55,12 @@ while($row = mysqli_fetch_assoc($result))
 </table>
 
 <br><br>
-
 <a href="view_products.php">
     <button>Continue Shopping</button>
 </a>
 
-</body>
-</html>
+<br><br>
+
+<a href="checkout.php">
+    <button>Checkout</button>
+</a>
