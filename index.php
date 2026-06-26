@@ -1,3 +1,7 @@
+<?php
+include 'db_connect.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,27 +11,110 @@
 </head>
 <body>
 
-    <h1>Welcome to My E-Commerce System</h1>
+<nav class="navbar">
+    <a href="index.php">Home</a>
+    <a href="view_products.php">Products</a>
+    <a href="cart.php">Cart</a>
+    <a href="login.php">Login</a>
+</nav>
+
+<div class="hero">
+    <h1>Welcome to Imma Electronics Store</h1>
+
+    <p>
+        Latest Laptops, Smartphones and Accessories at Affordable Prices
+    </p>
+
+    <a href="view_products.php">
+        <button>Shop Now</button>
+    </a>
+</div>
+
+
 
     <hr>
 
-    <h2>Main Menu</h2>
+<h2>Featured Products</h2>
 
-    <a href="register.php">
-        <button>Customer Registration</button>
-    </a>
+<div class="product-grid">
 
-    <br><br>
+<?php
 
-    <a href="view_customers.php">
-        <button>View Customers</button>
-    </a>
+$sql = "SELECT * FROM products";
+$result = mysqli_query($conn, $sql);
 
-    <br><br>
+while($row = mysqli_fetch_assoc($result))
+{
+?>
 
-    <a href="dashboard.php">
-        <button>Dashboard</button>
-    </a>
+<div class="product-card">
+
+    <img src="images/<?php echo $row['image']; ?>" alt="Product Image">
+
+    <h3><?php echo $row['product_name']; ?></h3>
+
+    <p><?php echo $row['description']; ?></p>
+
+    <p><strong>Ksh <?php echo $row['price']; ?></strong></p>
+
+</div>
+
+<?php
+}
+?>
+
+</div>
+
+<hr>
+
+
+    <div class="dashboard-container">
+
+    <div>
+        <h2>Customer Registration</h2>
+
+        <a href="register.php">
+            <button>Register Customer</button>
+        </a>
+    </div>
+
+    <div>
+        <h2>Browse Products</h2>
+
+        <a href="view_products.php">
+            <button>View Products</button>
+        </a>
+    </div>
+
+    <div>
+        <h2>Shopping Cart</h2>
+
+        <a href="cart.php">
+            <button>View Cart</button>
+        </a>
+    </div>
+
+    <div>
+        <h2>Dashboard</h2>
+
+        <a href="dashboard.php">
+            <button>Admin Dashboard</button>
+        </a>
+    </div>
+
+</div>  
+            <h2>Dashboard</h2>
+
+            <a href="dashboard.php">
+                <button>Admin Dashboard</button>
+            </a>
+        </div>
+
+    </div>
+    <footer>
+    <p>&copy; 2026 Imma Electronics Store. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
+

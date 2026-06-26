@@ -28,10 +28,15 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
 
-<form method="GET">
-    <input type="text" name="search" placeholder="Search products">
+<form method="GET" style="text-align:center; margin-bottom:20px;">
 
-    <input type="submit" value="Search">
+    <input type="text"
+           name="search"
+           placeholder="Search products..."
+           style="padding:10px; width:250px;">
+
+    <button type="submit">Search</button>
+
 </form>
 
 <br>
@@ -39,6 +44,10 @@ $result = mysqli_query($conn, $sql);
 <div class="product-grid">
 
 <?php
+if(mysqli_num_rows($result) == 0)
+{
+    echo "<h3 style='text-align:center;'>No products found.</h3>";
+}
 while($row = mysqli_fetch_assoc($result))
 {
 ?>
